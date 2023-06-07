@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <input type="text" name="name" placeholder="Введіть назву">
+        <input type="number" name="years" placeholder="Введіть рік">
+        <input type="text" name="series" placeholder="Введіть модель">
+        <input type="numbers" name="speed" placeholder="Введіть швидкість">
+        <input type="text" name="price" placeholder="Введіть ціну">
+        <select name="type" id="">
+            <option value="kfmasmf">Кросовер</option>
+            <option value="Легкова">Легкова</option>
+            <option value="Бус">Бус</option>
+        </select>
+        <button>ПІдтвердити</button>
+    </form>
+    
+</body>
+</html>

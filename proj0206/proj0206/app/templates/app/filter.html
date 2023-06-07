@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'app/style.css' %}">
+</head>
+<body>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <div class="bar">
+            <input type="text" placeholder="Введіть мінімальну ціну" name="min_price">
+            <input type="text" name="max_price" placeholder="Введіть максимальну ціну">
+            <button>Знайти мінімальну</button>
+        </div>
+
+
+       
+        
+            <div class="main">
+                {% for comp in computer %}
+                <div class="info">
+                    <p>Назва: {{comp.name}}</p>
+                    <p>Фірма: {{comp.firm}}</p>
+                    <p>Рік створення: {{comp.year}}</p>
+                    <p>Розміри: {{comp.size}}</p>
+                    <p>Ціна: {{comp.price}}</p>
+                    <button class="btn">Купити</button>
+                </div>
+                {% endfor %}
+            </div>
+        
+    
+        
+        
+    </form>
+    
+</body>
+</html>
