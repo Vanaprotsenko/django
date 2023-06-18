@@ -7,16 +7,37 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="" method="POST">
+    <h2 class="my-4">Add a new movie poster</h2>
+    <form action="" method="POST" enctype="multipart/form-data">
+        
         {% csrf_token %}
         <input type="text" name="name" placeholder="Назва">
         <input type="text" name="firm" placeholder="Фірма яка створила">
         <input type="number" name="year" placeholder="Рік">
         <input type="number" name="size" placeholder="Розміри">
         <input type="number" name="price" placeholder="Ціна">
+        <input type="text" name="media" placeholder="">
+        <input type="file" name="upload" accept="image/*">
+                <br>
+                <button class="btn btn-dark my-4" type="submit">Submit</button>
         <button>Сворити</button>
     </form>
-    <a href="/info/">Інформація за компи</a>
+    <!-- <a href="/info/">Інформація за компи</a> -->
+    <br>
+    <h2 class="my-4">Movie Poster</h2>
+          <div class="row">
+            {% if file_url %}
+            <div class="col-lg-4 col-md-6 col-sm-12 pb-4">
+              <img src="{{ file_url }}" class="img-fluid">
+              <br>
+              <a class="btn btn-dark my-4" href="/">Return to Homepage</a>
+            {% else %}
+            <p>No movies posters added.</p>
+            {% endif %}
+          </div>
+
+        </div>
+    
     
 </body>
 </html>

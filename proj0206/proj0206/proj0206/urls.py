@@ -16,6 +16,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf import settings
+from django.conf.urls.static import static
 from app.views import *
 
 urlpatterns = [
@@ -23,7 +25,8 @@ urlpatterns = [
     path('',main),
     path('info/',info),
     path('info/<int:id>/',info_one),
-    path('filter/',filters)
+    path('filter/',filters),
+    path("upload",upload)
 
     
-]
+]+static(settings.MEDIA_URL,dociment_root = settings.MEDIA_ROOT)

@@ -23,6 +23,10 @@
             <div class="main">
                 {% for comp in computer %}
                 <div class="info">
+                    <div class="image">
+                        <img src="{% static img %}" alt="Пример изображения">
+                    </div>
+                    
                     <p>Назва: {{comp.name}}</p>
                     <p>Фірма: {{comp.firm}}</p>
                     <p>Рік створення: {{comp.year}}</p>

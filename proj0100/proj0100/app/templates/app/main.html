@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    {% block content %}  
+       
+            <div class="container">
+    
+              <!--Simple Form-->
+              <h2 class="my-4">Add a new Laptop</h2>
+              {% if user.is_authenticated %}
+              <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                    <input type="file" name="upload" accept="image/*">
+                    <input type="text" name="name" placeholder="Імя">
+                    <input type="number" name="price"placeholder="Ціна">
+                    <input type="text" name="model"placeholder="Модель">
+                    <input type="number" name="year"placeholder="Рік">
+                    <input type="number" name="size"placeholder="Розміри">
+                    <br>
+                    <button class="btn btn-dark my-4" type="submit">Submit</button>
+                    
+              </form>
+              {% endif %}
+    
+            
+    
+            </div>
+            {% for comp in comp_all %}
+            <div>
+              <img src="{{comp.image}}" alt="">
+              <p>Название {{comp.name}}</p>
+              <p>Ціна {{comp.price}}</p>
+              <p>Модель {{comp.model}}</p>
+              <p>Рік {{comp.year}}</p>
+              <p>Розміри {{comp.size}}</p>
+            </div>
+            {% endfor %}
+
+        
+    
+    {% endblock %}
+    
+</body>
+</html>

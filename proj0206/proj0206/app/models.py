@@ -8,3 +8,4 @@ class Comp(models.Model):
     year = models.IntegerField()
     size = models.IntegerField()
     price = models.IntegerField()
+    

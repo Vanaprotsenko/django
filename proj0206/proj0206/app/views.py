@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import Comp
+from django.core.files.storage import FileSystemStorage
 
 def main(request):
     if request.method == 'POST':
@@ -8,7 +9,8 @@ def main(request):
         year = request.POST.get('year')
         size = request.POST.get('size')
         price = request.POST.get('price')
-        Comp.objects.create(name=name, firm=firm, year=year, size=size, price=price)
+        media = request.POST.get('media')
+        Comp.objects.create(name=name, firm=firm, year=year, size=size, price=price,media=media)
     return render(request, 'app/main.html')
 
 
@@ -39,9 +41,25 @@ def filters(request):
     
     context = {
         'computer': computer,
+        'img':'image/img.jpg'
         
     }
     return render(request, 'app/filter.html', context)
+
+
+
+
+def upload(request):
+    if request.method == 'POST' and request.FILES['upload']:
+        upload = request.FILES['upload']
+        fss = FileSystemStorage()
+        file = fss.save(upload.name, upload)
+        file_url = fss.url(file)
+        context = {
+            'file_url': file_url
+        }
+        return render(request, 'app/main.html',context)
+    return render(request, 'app/main.html')
 
 
 
